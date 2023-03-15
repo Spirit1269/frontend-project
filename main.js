@@ -1,12 +1,19 @@
-
 let $name = $("#symbol");
+let $value = $('#dropDown');
 let $button = $("#submit")
 let $results = $("#results")
 
-$button.on("click",function(){
-  let name = $name.val();
-  name.toUpperCase();
-  $.get(`https://financialmodelingprep.com/api/v3/quote/${name}?apikey=8672d4bf71053ec270bb774352caec83` , (data) => {
+
+$button.on("click", getValues)
+$value.on("click", getValues)
+
+function getValues(event) {
+    event.preventDefault();
+    let name = $name.val().toUpperCase();
+    let selectedValue = $value.val();
+    if(selectedValue) {
+        name = selectedValue;
+     $.get(`https://financialmodelingprep.com/api/v3/quote/${name}?apikey=8672d4bf71053ec270bb774352caec83` , (data) => {
     $results.empty();
     console.log(data);
     if (data ===[]){
@@ -14,10 +21,11 @@ $button.on("click",function(){
     }else {
         let $card = $('<div>').addClass('result-card');
         let $cardTitle = $('<h4>').text(`NAME:  ${data[0].name}`);
-        let $cardPrice = $('<h4>').text(`PRICE:  $ ${data[0].price}`);
+        let $cardPrice = $('<h4>').text(`CURRENT PRICE:  $ ${data[0].price}`);
         let $cardExchange = $('<h4>').text(`EXCHANGE:  ${data[0].exchange}`)
         $card.append($cardTitle, $cardPrice, $cardExchange)
         $results.append($card)
         }
     })
-  })
+}
+}
