@@ -22,13 +22,13 @@
                 Also, you can choose to display the stock quote from the top ten popular companies.          
             </p>
         </section>
-        <div id = 'userSection'>
+        <form id = 'userSection'>
             <label for ='symbol'>Enter the stock symbol such as 'AAPL':</label>
             <input id = 'symbol' type="text" name = 'search'>
             <button id = "submit">Search</button>
             <p>OR</p>
             <label for = 'dropDown'>Choose a stock from the list:</label>
-            <select name = "symbolsList" id="dropDown">
+            <select name = "symbolsList" id="dropDown" onchange="getValues(event)">
                 <option>Please choose</option>
                 <option value = "META">Facebook/Meta</option>
                 <option value = "AAPL">Apple Inc</option>
@@ -39,6 +39,7 @@
                 <option value = "AAL">American Airlines Group</option>
                 <option value = "DIS">Walt Disney</option>
             </select>
+        </form>
         </div>
         <div id="results">
 

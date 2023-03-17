@@ -1,36 +1,49 @@
-let $name = $("#symbol");
-let $value = $('#dropDown');
+let $typedValue = $("#symbol");
+let $selectedValue = $('#dropDown');
 let $button = $("#submit")
 let $results = $("#results")
+let $form = $('#userSection')
 let today =  new Date().toISOString().slice(0, 10)
-
 console.log(today)
  
-$button.on("click", function(event){
+
+// $button.on("click", function(event){
+//     getValues(event);
+// })
+// $selectedValue.on("change", function(event){ 
+//     getValues(event);
+// });
+
+$form.on("submit", function(event) {
+    event.preventDefault();
     getValues(event);
 })
-$value.on("change", function(event){
-    // selectedValue = $value.val();
-    getValues(event);
-});
-
+// funtion to receive and display values 
 function getValues(event) {
     event.preventDefault();
-
-    let name = $name.val().toUpperCase();
-    let selectedValue = $value.val();
+    let name = []
+    let typedValue = $typedValue.val().toUpperCase();
+    let selectedValue = $selectedValue.val();
     
-    if (!name && selectedValue === 'Please choose') {
+    if (!typedValue && selectedValue === 'Please choose') {
         alert("Please enter a symbol or select one from the list.");
         return;
     }
 
-    if (name && selectedValue !== 'Please choose') {
+    if (typedValue && selectedValue !== 'Please choose') {
         // If both input field and dropdown have values, use dropdown value
-        name = selectedValue;
+        name = typedValue;
+    }
+    if (!typedValue && selectedValue !== 'Please choose') {
+        name = selectedValue
+
+    }
+    if (typedValue &&  selectedValue === 'Please choose' ) {
+        name = typedValue;
     }
 
-    console.log(name)
+
+    console.log(typedValue)
     console.log(selectedValue)
     
      $.get(`https://financialmodelingprep.com/api/v3/quote/${name}?apikey=8672d4bf71053ec270bb774352caec83` , (data) => {
@@ -56,5 +69,6 @@ function getValues(event) {
     })
     .fail(function() {
         alert("An error occurred while retrieving the data. Please try again later.");
-})
+    })
+    $form[0].reset();
 }
