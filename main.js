@@ -28,15 +28,18 @@ function getValues(event) {
 //     alert("Please enter a symbol or select one from the list.");
 //     return;
 //   }
-    let name, selectedValue
+let name = $name.val().toUpperCase();
+let selectedValue = $value.val();
     
-    if(event.target === $name[0]) {
-        name = $name.val().toUpperCase();
-        selectedValue = $value.val();
-    } else {
-        name = $value.val();
-        selectedValue=name;
-    }
+if (!name && selectedValue === 'choose') {
+    alert("Please enter a symbol or select one from the list.");
+    return;
+}
+
+if (name && selectedValue !== 'Please choose') {
+    // If both input field and dropdown have values, use dropdown value
+    name = selectedValue;
+}
     console.log(name)
     console.log(selectedValue)
     // if (selectedValue && name) {
