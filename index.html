@@ -13,9 +13,15 @@
 </head>
 <body>
     <header>
-        <h1>Finance Reports</h1>
+        <h1 id = 'heading'>STOCKS</h1>
     </header>
     <div id = "main">
+        <section id = 'description'>
+            <p>Stock prices are changing every minute througout the work day.  
+                You can now enter your stock symbol to get an updated price per stock. 
+                Also, you can choose to display the stock quote from the top ten popular companies.          
+            </p>
+        </section>
         <div id = 'userSection'>
             <label for ='symbol'>Enter the stock symbol such as 'AAPL':</label>
             <input id = 'symbol' type="text" name = 'search'>
@@ -23,6 +29,7 @@
             <p>OR</p>
             <label for = 'dropDown'>Choose a stock from the list:</label>
             <select name = "symbolsList" id="dropDown">
+                <option>Please choose</option>
                 <option value = "META">Facebook/Meta</option>
                 <option value = "AAPL">Apple Inc</option>
                 <option value = "TSLA">Tesla Inc.</option>
@@ -30,6 +37,7 @@
                 <option value = "AMZN">Amazon.com, Inc.</option>
                 <option value = "GOOGL">Alphabet Inc./Google</option>
                 <option value = "AAL">American Airlines Group</option>
+                <option value = "DIS">Walt Disney</option>
             </select>
         </div>
         <div id="results">

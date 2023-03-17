@@ -6,6 +6,10 @@ body {
     background-size: cover;
     background-color: #ccbfbf;
 }
+#heading {
+    text-align: center;
+    font-family: "Arima Madurai", cursive;
+}
 #main {
     width: 800px;
     font-family: "Arima Madurai", cursive;
@@ -16,6 +20,10 @@ body {
     text-align: center;
     padding: 20px;
     color: antiquewhite;
+  }
+  #description {
+    text-align: left;
+    font-size: larger;
   }
   
   #results {
